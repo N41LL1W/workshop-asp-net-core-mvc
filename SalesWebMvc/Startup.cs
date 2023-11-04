@@ -15,6 +15,7 @@ using Microsoft.EntityFrameworkCore;
 using SalesWebMvc.Models;
 using SalesWebMvc.Data;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+using SalesWebMvc.Services;
 
 
 namespace SalesWebMvc
@@ -51,7 +52,7 @@ namespace SalesWebMvc
 
 
             services.AddScoped<SeedingService>();
-            //services.AddScoped<SellerService>();
+            services.AddScoped<SellerService>();
             //services.AddScoped<DepartmentService>();
             //services.AddScoped<SalesRecordService>();
         }
