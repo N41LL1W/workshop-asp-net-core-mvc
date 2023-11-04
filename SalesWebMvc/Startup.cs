@@ -14,7 +14,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using SalesWebMvc.Models;
 using SalesWebMvc.Data;
-//using SalesWebMvc.Services;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+
 
 namespace SalesWebMvc
 {
@@ -41,10 +42,15 @@ namespace SalesWebMvc
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddDbContext<SalesWebMvcContext>(options =>
-                    options.UseMySql(Configuration.GetConnectionString("SalesWebMvcContext"), builder =>
-                        builder.MigrationsAssembly("SalesWebMvc")));
+                options.UseMySql(
+                    Configuration.GetConnectionString("SalesWebMvcContext"),
+                    new MySqlServerVersion(new Version(8, 0, 23)), // Substitua a versão pelos números da versão do seu MySQL
+                    builder => builder.MigrationsAssembly("SalesWebMvc")
+                )
+            );
 
-            //services.AddScoped<SeedingService>();
+
+            services.AddScoped<SeedingService>();
             //services.AddScoped<SellerService>();
             //services.AddScoped<DepartmentService>();
             //services.AddScoped<SalesRecordService>();
