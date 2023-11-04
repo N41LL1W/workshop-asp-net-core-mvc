@@ -14,7 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using SalesWebMvc.Models;
 using SalesWebMvc.Data;
-using SalesWebMvc.Services;
+//using SalesWebMvc.Services;
 
 namespace SalesWebMvc
 {
@@ -44,14 +44,14 @@ namespace SalesWebMvc
                     options.UseMySql(Configuration.GetConnectionString("SalesWebMvcContext"), builder =>
                         builder.MigrationsAssembly("SalesWebMvc")));
 
-            services.AddScoped<SeedingService>();
-            services.AddScoped<SellerService>();
-            services.AddScoped<DepartmentService>();
-            services.AddScoped<SalesRecordService>();
+            //services.AddScoped<SeedingService>();
+            //services.AddScoped<SellerService>();
+            //services.AddScoped<DepartmentService>();
+            //services.AddScoped<SalesRecordService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, SeedingService seedingService)
+        public void Configure(IApplicationBuilder app, Microsoft.AspNetCore.Hosting.IHostingEnvironment env, SeedingService seedingService)
         {
             var enUS = new CultureInfo("en-US");
             var localizationOptions = new RequestLocalizationOptions
