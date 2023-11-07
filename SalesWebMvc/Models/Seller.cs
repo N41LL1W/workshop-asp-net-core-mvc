@@ -18,13 +18,13 @@ namespace SalesWebMvc.Models
         [EmailAddress(ErrorMessage = "Enter a valid email")]
         public string Email { get; set; }
 
-        [Display(Name = 'Birth Date')]
+        [Display(Name = "Birth Date")]
         [DataType(DataType.Date)]
         [Required(ErrorMessage = "{0} required")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime BirthDate { get; set; }
 
-        [Display(Name = 'Base Salary')]
+        [Display(Name = "Base Salary")]
         [DisplayFormat(DataFormatString = "{0:F2}")]
         [Required(ErrorMessage = "{0} required")]
         [Range(100.0, 50000.0, ErrorMessage = "{0} must be from {1} to {2}")]
